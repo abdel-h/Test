@@ -15,7 +15,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/api')
+        fetch('http://localhost:3001/api')
             .then(response => response.json())
             .then(data => {
                 this.setState({ loaded: true, data });
