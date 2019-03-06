@@ -7,7 +7,7 @@ const helpers = require('./helpers/helpers');
 const app = express();
 app.use(cors());
 
-app.use('/api', (req, res, next) => {
+app.use('/api/meal_planner', (req, res, next) => {
     axios({
         url: 'https://foodvisor.io/itw/food/list/?foo=bar',
         headers: { Authorization: 'Bearer iwn-31@!3pf(w]pmarewj236^in' }
@@ -17,7 +17,7 @@ app.use('/api', (req, res, next) => {
         next();
     });
 });
-app.get('/api', function(req, res) {
+app.get('/api/meal_planner', function(req, res) {
     res.json(req.foodVisorData);
 });
 

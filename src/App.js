@@ -10,15 +10,20 @@ class App extends Component {
         super(props);
         this.state = {
             data: {},
-            loaded: false
+            loaded: false,
+            error: false
         };
     }
 
     componentDidMount() {
-        fetch('http://localhost:3001/api')
+        fetch('http://localhost:3001/api/meal_planner')
             .then(response => response.json())
             .then(data => {
                 this.setState({ loaded: true, data });
+            })
+            .catch(err => {
+                // should be handled better
+                this.setState({ error: true });
             });
     }
     render() {
@@ -29,8 +34,8 @@ class App extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
-        const { data, loaded } = this.state;
-        return loaded ? (
+        const { data, loaded, error } = this.state;
+        return loaded && !error ? (
             <div className="App">
                 <Slider
                     {...sliderSettings}

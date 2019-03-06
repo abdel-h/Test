@@ -14,6 +14,8 @@ exports.mealPlanner = foodVisorData => {
     //  meals is now sorted by type
 
     // get one meal from each type and count calories
+
+    // would be best to run a DPS here, but for the test purpose I just did it manually
     const results = [];
     let counter = 0;
     for (let i = 0; i < meals.starter.length; i++) {
