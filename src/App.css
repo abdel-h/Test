@@ -1,33 +1,114 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+html,
+body,
+#root,
 .App {
-  text-align: center;
+    height: 100vh;
+}
+.App {
+    text-align: center;
+    background: #00c393;
+    position: relative;
+    padding-top: 50px;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Slider */
+.slick-slider {
+    margin: 0 auto;
+    background: #fff;
+    height: 80vh;
+    width: 60vh;
+}
+/* Meal */
+.meal {
+    display: flex;
+    flex-direction: column;
+}
+.food-item {
+    height: 150px;
+    width: 200px;
+    position: relative;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 1px 1px 25px 4px #cecece;
+}
+.food-item__background {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+.food-item__background img {
+    width: 100%;
+}
+.food-item__display-name {
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.food-item__display-name h4 {
+    margin: 5px;
+}
+.meal__total {
+    width: 150px;
+    margin: 10px auto;
+    padding: 10px;
+    background: #00c393;
+    color: #fff;
+    text-transform: uppercase;
+    border: 2px solid #06b287;
+}
+.hidden {
+    display: none;
+}
+.food-item:hover .hidden {
+    display: block;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #fff;
+}
+.slick-dots li button:before {
+    height: 40px;
+    width: 40px;
+}
+.slick-prev:before,
+.slick-next:before {
+    font-size: 18px;
 }
