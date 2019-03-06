@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FoodItem from './components/FoodItem';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {},
+            loaded: false
+        };
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/api')
+            .then(response => response.json())
+            .then(data => this.setState({ loaded: true, data }));
+    }
+    render() {
+        const { data, loaded } = this.state;
+
+        return loaded ? (
+            <div className="App">
+                {data.map((itemData, i) => {
+                    return <FoodItem key={i} itemData={itemData} />;
+                })}
+            </div>
+        ) : (
+            <></>
+        );
+    }
 }
 
 export default App;
